@@ -17,3 +17,17 @@ the following will forward local host traffic from port 8080 to remote host 10.3
 ```
 docker run -e REMOTE_HOST=10.32.0.1 -e REMOTE_PORT=27017 -p 8080:80 port-forward
 ```
+
+- docker-compose
+
+```
+version: '2'
+services:
+  proxy:
+    image: lotosbin/port-forward:alpine
+    environment:
+      - REMOTE_HOST=10.32.0.1
+      - REMOTE_PORT=27017
+    ports:
+      - "8080:80"
+```
